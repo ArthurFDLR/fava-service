@@ -1,0 +1,5 @@
+regex
+tqdm
+pdfminer.six
+pandas
+smart_importer

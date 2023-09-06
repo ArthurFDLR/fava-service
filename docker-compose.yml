@@ -1,0 +1,22 @@
+version: '3.6'
+
+secrets:
+  ledger_git:
+    file: secrets/fava.ledger-git.sample
+
+configs:
+  fava:
+    file: scripts/user.conf
+
+services:
+  fava:
+    image: fava:1.0.0
+    container_name: fava
+    ports:
+      - "5000:5000"
+    secrets:
+      - ledger_git
+    configs:
+      - source: fava
+        target: /etc/user.conf
+    restart: always
