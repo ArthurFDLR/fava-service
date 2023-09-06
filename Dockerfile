@@ -94,8 +94,8 @@ RUN chmod +x /app/entrypoint.sh
 # Add the application to the PATH
 ENV PATH "/app/bin:$PATH"
 
-# Setup the cron job
-RUN (echo "*/1 * * * * /app/pull_ledger.sh >> /app/pull_ledger.log 2>&1") | crontab -
+# Setup the cron job, runs every hour
+RUN (echo "0 * * * * /app/pull_ledger.sh >> /app/pull_ledger.log 2>&1") | crontab -
 
 # Default fava port number
 EXPOSE 5000
