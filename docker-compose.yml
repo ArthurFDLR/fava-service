@@ -2,7 +2,7 @@ version: '3.6'
 
 secrets:
   ledger_git:
-    file: secrets/fava.ledger-git
+    file: secrets/ledger-git
 
 configs:
   fava:
@@ -13,7 +13,7 @@ services:
     image: fava-service:1.0.0
     container_name: fava
     ports:
-      - "5000:5000"
+      - 5000:5000
     secrets:
       - ledger_git
     configs:
