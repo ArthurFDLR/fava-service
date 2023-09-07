@@ -1,5 +1,11 @@
 <h1 align = "center"> Beancount Fava Docker Service </h1>
 
+Deploy [Beancount Fava](https://github.com/beancount/fava) as a Docker service, including:
+ - Automatic refresh of your Ledger hosted on a Git repository;
+ - [Nginx](https://www.nginx.com/) reverse proxy with [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication);
+ - [Nord Theme](https://www.nordtheme.com/) for Fava;
+
+
 <p align="center">
     <img src="https://github.com/ArthurFDLR/fava-service/blob/main/.github/nord-theme.png?raw=true" alt="Banner" width="100%" style="border-radius: 5px;">
 </p>
@@ -20,14 +26,17 @@
     ```sh
     htpasswd -c .htpasswd <user>
     ```
+    > **Note:** Install `apache2-utils` if you don't have `htpasswd`.
 
-3. [Optional] Customize the Fava theme by editing the [`style.css`](./style.css) file. Or, if you want to use the default Fava theme, comment the following line in the [`Dockerfile`](./Dockerfile) file:
+3. Set the refresh rate of the Ledger (i.e. `pull` your repository) as a Cron schedule in the [`Dockerfile`](./Dockerfile) file (`0 * * * *` by default).
+
+4. [Optional] Customize the Fava theme by editing the [`style.css`](./style.css) file ([Nord Theme](https://www.nordtheme.com/) by default). Or, if you want to use the default Fava theme, comment the following line in the [`Dockerfile`](./Dockerfile) file:
     ```Dockerfile
     # Comment the following line to use the default Fava theme
     COPY ./style.css ./fava/frontend/css/style.css
     ```
 
-4. Build the Docker image:
+5. Build the Docker image:
     ```sh
     docker build -t fava-service .
     ```
