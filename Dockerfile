@@ -16,6 +16,7 @@ RUN apt-get update && \
 
 # Build Fava from source code with custom style.css
 RUN git clone --depth 1 --branch ${FAVA_VERSION} https://github.com/beancount/fava
+# Comment the following line to use the default Fava theme
 COPY ./style.css ./fava/frontend/css/style.css
 RUN make -C ./fava
 
