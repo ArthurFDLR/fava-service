@@ -86,6 +86,7 @@ WORKDIR /app
 COPY pull_ledger.sh /app/
 COPY entrypoint.sh /app/
 COPY app.conf /app/
+COPY .gitconfig /etc/gitconfig
 
 # Make the script executable
 RUN chmod +x /app/pull_ledger.sh
