@@ -19,4 +19,4 @@ services:
     configs:
       - source: fava
         target: /etc/user.conf
-    restart: always
+    restart: unless-stopped
