@@ -1,5 +1,6 @@
 #!/bin/bash
 
+service nginx start
 service rsyslog start
 service cron start
 
@@ -10,4 +11,4 @@ echo "Pulling ledger repository..."
 /app/pull_ledger.sh
 
 echo "Starting fava ($REPOSITORY_DIR/$BEAN_FILE)..."
-/app/bin/fava $REPOSITORY_DIR/$BEAN_FILE --port $FAVA_PORT
+/app/bin/fava $REPOSITORY_DIR/$BEAN_FILE --port $FAVA_PORT --host $FAVA_HOST

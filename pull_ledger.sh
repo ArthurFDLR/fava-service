@@ -7,7 +7,6 @@ fi
 
 # Load configuration from Docker configs
 source /app/app.conf
-echo "$USER_CONF_FILE"
 source "$USER_CONF_FILE"
 
 # Check if LEDGER_GIT is defined

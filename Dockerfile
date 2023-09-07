@@ -76,17 +76,19 @@ COPY --from=build_env /app /app
 
 # Install Git and Cron
 RUN apt update && \
-    apt install -y git cron rsyslog && \
+    apt install -y git cron rsyslog nginx apache2-utils && \
     apt clean
 
 # Set working directory
 WORKDIR /app
 
-# Copy the Bash scripts and the configuration file
+# Copy the Bash scripts and the configuration files
 COPY pull_ledger.sh /app/
 COPY entrypoint.sh /app/
 COPY app.conf /app/
 COPY .gitconfig /etc/gitconfig
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY .htpasswd /etc/nginx/.htpasswd
 
 # Make the script executable
 RUN chmod +x /app/pull_ledger.sh
@@ -101,8 +103,8 @@ RUN (echo "0 * * * * /app/pull_ledger.sh >> /app/pull_ledger.log 2>&1") | cronta
 # Default fava port number
 EXPOSE 5000
 
-# Default Fava host
-ENV FAVA_HOST "0.0.0.0"
+# # Default Fava host
+# ENV FAVA_HOST "0.0.0.0"
 
 # TODO: Remove this once the fava issue is fixed
 RUN ln -s /usr/local/bin/python3 /usr/bin/python3
