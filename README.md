@@ -1,4 +1,8 @@
-# Beancount Fava Service
+<h1 align = "center"> Beancount Fava Docker Service </h1>
+
+<p align="center">
+    <img src="https://github.com/ArthurFDLR/fava-service/blob/master/.github/nord-theme.png?raw=true" alt="Banner" width="100%" style="border-radius: 5px;">
+</p>
 
 ## Installation
 
